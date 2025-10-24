@@ -1,5 +1,10 @@
 # Oracle Pump CLI
 
+![Python Version](https://img.shields.io/badge/python-3.9%2B-blue)
+![Version](https://img.shields.io/badge/version-v1.0-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-green)
+[![Last Commit](https://img.shields.io/github/last-commit/srohit619/oracle-pump-cli)](https://github.com/srohit619/oracle-pump-cli/commits/main)
+
 A command-line utility to automate Oracle Data Pump (expdp) operations for fast and repeatable database schema exports.
 
 ## Description
