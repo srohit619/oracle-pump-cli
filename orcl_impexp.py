@@ -43,7 +43,7 @@ class Spinner:
         if self.spinner_visible:
             print('\r' + ' ' * (len(self.message) + 2) + '\r', end='')
 
-def get_db_credentials():
+def get_db_credentials(is_import=False):
     """Prompts the user for database connection details."""
     print("\nPlease enter your Oracle database connection details:")
     db_user = input("User: ")
@@ -53,6 +53,10 @@ def get_db_credentials():
     db_service = input("Service Name (e.g., orcl): ")
     
     dsn = f"{db_host}:{db_port}/{db_service}"
+    
+    if is_import:
+        is_sysdba = input("Connect as SYSDBA? (yes/no): ").lower() == 'yes'
+        return db_user, db_password, dsn, is_sysdba
         
     return db_user, db_password, dsn
 
@@ -234,10 +238,28 @@ def run_export_workflow():
     else:
         print("\nTool execution failed.")
 
+def run_import_workflow():
+    """Runs the entire import process."""
+    print("\n--- Oracle Database Import Tool ---")
+    print("Import functionality is not yet implemented.")
+
 def main():
     """Main function to run the Oracle export tool."""
-    print("--- Oracle Database Export Tool ---")
-    run_export_workflow()
+    print("--- Oracle Database Export/Import Tool ---")
+    print("Please select an operation:")
+    print("1. Export")
+    print("2. Import")
+
+    while True:
+        choice = input("Enter your choice (1 or 2): ")
+        if choice == '1':
+            run_export_workflow()
+            break
+        elif choice == '2':
+            run_import_workflow()
+            break
+        else:
+            print("Invalid choice. Please enter 1 or 2.")
 
 
 if __name__ == "__main__":
